@@ -19,6 +19,8 @@ def compute_age():
     age = (currentDate.year - birthdayObject.year) - ((currentDate.month,
                                                        currentDate.day) < (birthdayObject.month, birthdayObject.day))
     return render_template("profile.html",
+                           # render_template automatically protects from XSS.
+                           # It works by using the Jinja2 template engine which enables automatic escaping by default
                            age=age,
                            name=name,
                            birthday=birthday)
